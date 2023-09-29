@@ -6,7 +6,8 @@ This is a `Node.js / Express` project.
 ## Getting Started
 
 First, install dependencies:
-
+You should have node and handbrake-CLI running on the latest version <br>
+Download node: https://nodejs.org/en/download <br> Download handbrake-CLI: https://handbrake.fr/downloads2.php
 ```bash
 npm install
 ```
@@ -16,6 +17,12 @@ npm install
 
 - **dev** -> pr this branch for everything `frontend` & `backend` related
 - **main** -> **dont touch** this branch, this is what is running in production.
+## Testing
+
+To properly test, you should have postman installed (can be easily dont in VSCode)
+- Go to postman, New Http Request, method: POST to localhost:yourPreferredPort/upload || localhost:3000/upload
+- Body should be form-data with a key video and value should be a video file
+  ![image](https://github.com/Oluwademiladeogo/HelpMeOut/assets/103854587/bd716f00-601c-40af-9c60-780a8af42fe0)
 
 ## Contributions
 
