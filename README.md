@@ -1,6 +1,5 @@
 # HelpMeOut
 A chrome extension screen recorder
-# Free Lunch - Backend
 
 This is a `Node.js / Express` project.
 
