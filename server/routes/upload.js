@@ -4,7 +4,7 @@ const multer = require("multer");
 const hbjs = require("handbrake-js");
 const upload = multer({ dest: "../uploads" });
 const path = require("path");
-const moveAndRename = require("./moveRenameFile");
+const moveAndRename = require("../functions/moveRenameFile");
 //Endpoint to receive uploads
 //multiple res.writes with each having a key to access.
 router.get("/", async (req, res) => {});
