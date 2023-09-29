@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {});
 router.post("/", upload.single("video"), async (req, res) => {
   try {
     if (!req.file) {
-      return res.status(400).send({ messagemulter: "No file uploaded" });
+      return res.status(400).json({ multerError: "No file uploaded" });
     }
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Connection", "keep-alive");
@@ -30,7 +30,7 @@ router.post("/", upload.single("video"), async (req, res) => {
       .spawn(options)
       .on("error", (err) => {
         console.error(err.message);
-        res.status(500).json({ messagehbjs: "Compression failed" });
+        res.status(500).json({ hbjsError: "Compression failed" });
       })
       .on("progress", (progress) => {
         res.write(
