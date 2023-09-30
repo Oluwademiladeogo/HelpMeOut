@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const hbjs = require("handbrake-js");
 const path = require("path");
 const upload = multer({ dest: "../compressedUploads" });
 const moveAndRename = require("../helperFunctions/fileHandler");
@@ -53,7 +52,7 @@ router.post("/", upload.single("video"), async (req, res) => {
     //     .on("complete", () => {
     //       console.log("Compression complete!");
     //       // res.status(200).send("Operation complete");
-    //       moveAndRename(originalname, input);
+    moveAndRename(originalname, input);
     res.redirect("/videos?name=" + originalname);
     // });
   } catch (err) {
