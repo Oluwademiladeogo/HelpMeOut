@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/upload", require("./routes/uploadRoute"));
+app.use("/upload", require("./routes/upload"));
 app.use("/videos", require("./routes/videos"));
 app.get("/", (req, res) => {
   res.json({
