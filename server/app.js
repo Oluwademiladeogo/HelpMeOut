@@ -5,7 +5,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/upload", require("./helper/uploadRoute"));
+app.use("/upload", require("./routes/uploadRoute"));
+app.use("/videos", require("./routes/videos"));
 app.get("/", (req, res) => {
   res.json({
     response: "connected",

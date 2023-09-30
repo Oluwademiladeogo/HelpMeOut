@@ -4,8 +4,8 @@ const multer = require("multer");
 const hbjs = require("handbrake-js");
 const path = require("path");
 const upload = multer({ dest: "../compressedUploads" });
-const moveAndRename = require("./fileHandler");
-const transcribe = require("./transcribe");
+const moveAndRename = require("../helperFunctions/fileHandler");
+const transcribe = require("../helperFunctions/transcribe");
 //Endpoint to receive uploads
 //multiple res.writes with each having a key to access.
 router.get("/", async (req, res) => {});
@@ -39,7 +39,9 @@ router.post("/", upload.single("video"), async (req, res) => {
         .spawn(options)
         .on("error", (err) => {
           console.error(err.message);
-          res.status(500).json({ hbjsError: "Compression failed" });
+          res
+            .status(500)
+            .json({ hbjsError: "Compression failed please retry" });
         })
         .on("progress", (progress) => {
           console.log(
@@ -52,6 +54,7 @@ router.post("/", upload.single("video"), async (req, res) => {
           console.log("Compression complete!");
           // res.status(200).send("Operation complete");
           moveAndRename(originalname, input);
+          res.redirect("/videos?name=" + originalname);
         });
     } catch (ex) {
       console.log;
